@@ -1,16 +1,11 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from store.models import Product
 
 # Create your views here.
 # request --> HttpResponse
 # request handler 
 # action
 
-def calculate():
-  x = 1
-  y = 2
-  return x
-
 def say_hello(request):
-  x = calculate()
-  return render(request, 'hello.html', {'name': 'Maximillian'})
+  queryset = Product.objects.prefetch_related('promotions').all()
+  return render(request, 'hello.html', {'name': 'Maximillian', 'products' : list(queryset)})

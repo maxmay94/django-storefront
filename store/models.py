@@ -2,7 +2,7 @@ from django.db import models
 
 class Promotion(models.Model):
     description = models.CharField(max_length=255)
-    discout = models.FloatField()
+    discount = models.FloatField()
 
 class Collection(models.Model):
     title = models.CharField(max_length=255)
